@@ -22,18 +22,8 @@ app.post('/login',
   (req, res) => {
 
     const { username, password } = req.body
-    if(
-      username === users.users.username &&
-      password === users.users.password
-      ) {
-      return res.status(200).json({
-      message: 'Login succesfully'  
-    })
-    }else{
-      return res.status(400).json({
-        message: 'Invalid username or password'})
-    }
-  })
+      return res.status(200).json({message: 'Login succesfully' })
+})
 
 app.post('/register',
   (req, res) => {
