@@ -33,8 +33,7 @@ app.post('/register',
       password !== undefined &&
       firstname !== undefined &&
       lastname !== undefined &&
-      balance !== undefined &&
-      username !== users.users.username
+      balance !== undefined 
     ) {
       const newUser = {
         Username : username,
