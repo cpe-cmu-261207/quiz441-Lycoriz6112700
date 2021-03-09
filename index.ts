@@ -70,10 +70,10 @@ app.delete('/reset', (req, res) => {
 
 app.get('/me', (req, res) => {
   res.send({
-    "Firstname" : "Supawys",
-    "Lastname" : "Kantaprom",
-    "Code" : 620612167,
-    "GPA" : 4.00
+    "firstname" : "Supawys",
+    "lastname" : "Kantaprom",
+    "code" : 620612167,
+    "gpa" : 4.00
   })
 })
 
