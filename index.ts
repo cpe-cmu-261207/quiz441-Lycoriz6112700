@@ -11,6 +11,7 @@ app.use(cors())
 
 const PORT = process.env.PORT || 3000
 const SECRET = "SIMPLE_SECRET"
+const users = require("./allUser.json");
 
 interface JWTPayload {
   username: string;
@@ -21,17 +22,42 @@ app.post('/login',
   (req, res) => {
 
     const { username, password } = req.body
-    // Use username and password to create token.
-
-    return res.status(200).json({
-      message: 'Login succesfully',
+    if(
+      username === users.users.username &&
+      password === users.users.password
+      ) {
+      return res.status(200).json({
+      message: 'Login succesfully',  
     })
+    }else{
+      return res.status(400).json({
+        message: 'Invalid username or password'})
+    }
   })
 
 app.post('/register',
   (req, res) => {
-
-    const { username, password, firstname, lastname, balance } = req.body
+    const { username, password, firstname, lastname, balance } = req.body;
+    if (
+      username !== undefined &&
+      password !== undefined &&
+      firstname !== undefined &&
+      lastname !== undefined &&
+      balance !== undefined &&
+      username !== users.users.username
+    ) {
+      const newUser = {
+        Username : username,
+        password : password,
+        Firstname : firstname,
+        Lastname : lastname,
+        balance : balance
+      };
+      users.users.push(newUser);
+      res.status(200).send({ message: 'Register successfully' });
+    } else {
+      res.status(400).send({ message: 'Username is already in used' });
+    }
   })
 
 app.get('/balance',
