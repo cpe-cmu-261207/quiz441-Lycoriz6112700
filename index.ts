@@ -27,7 +27,7 @@ app.post('/login',
       password === users.users.password
       ) {
       return res.status(200).json({
-      message: 'Login succesfully',  
+      message: 'Login succesfully'  
     })
     }else{
       return res.status(400).json({
